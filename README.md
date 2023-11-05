@@ -3,10 +3,10 @@
 This project makes use of Google Earth Engine to acquire and process Sentinel-1 Synthetic Aperture Radar (SAR) data to characterize the 
 spatio-temporal patterns of floods in the Assam Valley.
 
-There are typically 4 types of data - optical, microwave, thermal and hyperspectral. Microwave data is what we used as it is better suited for the rainy season.
-We monitored rainfall’s impact on Brahmaputra’s water spread by looking at images from
+There are typically 4 types of data - optical, microwave, thermal and hyperspectral. Microwave data is what we use as it is better suited for the rainy season.
+We monitor rainfall’s impact on Brahmaputra’s water spread by looking at images from
 May to October. Water being smooth means the radiation reflects away, and these spaces look
-dark. Using this data, we analyzed the spread of river vs rainfall depth.
+dark. Using this data, we analyze the spread of river vs rainfall depth.
 
 
 # Filtering Bands and Polarizations
@@ -19,11 +19,11 @@ vertical polarization → HH, HV, VV, VH. It has three different operational mod
 
 3. Strip map: high resolution but small regions
 
-We got RGB composite from VV, VH, and VV/VH.
-We selected images from before and after every month and used the VH band for urban flood
-detection, then applied a speckle filter as mentioned in the UN-SPIDER Documentation. Then we
-calculated the difference and applied filters to remove pre-existing water, isolated pixels, and steep
-because these also can lead to dark spots, and then we calculated the area for the same.
+We get RGB composite from VV and VH.
+We select images from before and after every month and use the VH band for urban flood
+detection, then apply a speckle filter as mentioned in the UN-SPIDER Documentation. Then we
+calculate the difference and apply filters to remove pre-existing water, isolated pixels, and steep
+because these also can lead to dark spots, and then we calculate the area for the same.
 
 
 #  Using Feature Collections
@@ -80,5 +80,4 @@ the number of water points and we get less than 8 points as water, then that wou
 this point is misclassified and should not be counted in the same.
 Here we use the Google Earth Engine’s in-built terrain algorithm to select property slope and
 eliminate areas with a slope less than five, i.e., the slope threshold in our situation. After all
-this processing, we get the feature collection with the flooded area marked as red, as shown in
-the image
+this processing, we get the feature collection with the flooded area marked as red.
