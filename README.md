@@ -9,7 +9,7 @@ May to October. Water being smooth means the radiation reflects away, and these 
 dark. Using this data, we analyzed the spread of river vs rainfall depth.
 
 
-#Filtering Bands and Polarizations
+# Filtering Bands and Polarizations
 
 Sentinel 1 can receive specific polarizations simultaneously and send signals in horizontal or
 vertical polarization → HH, HV, VV, VH. It has three different operational modes, which are:
