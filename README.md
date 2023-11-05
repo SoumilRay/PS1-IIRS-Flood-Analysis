@@ -3,7 +3,7 @@
 This project makes use of Google Earth Engine to acquire and process Sentinel-1 Synthetic Aperture Radar (SAR) data to characterize the 
 spatio-temporal patterns of floods in the Assam Valley.
 
-There are typically 4 types of data - optical, microwave, thermal and hyperspectral. Microwave data is what we use as it is better suited for the rainy season.
+There are typically 4 types of data - optical, microwave, thermal and hyperspectral. Microwave data is what we used as it is better suited for the rainy season.
 We monitored rainfall’s impact on Brahmaputra’s water spread by looking at images from
 May to October. Water being smooth means the radiation reflects away, and these spaces look
 dark. Using this data, we analyzed the spread of river vs rainfall depth.
@@ -27,7 +27,7 @@ because these also can lead to dark spots, and then we calculated the area for t
 
 
 #  Using Feature Collections
-We have found a feature collection for separating the Assam region and also filtered the Sentinel
+We found a feature collection for separating the Assam region and also filtered the Sentinel
 1 collection using the properties we need, which include the following:
 1. Instrument Mode: IW
 2. Transmitter Receiver Polarisation: VH
