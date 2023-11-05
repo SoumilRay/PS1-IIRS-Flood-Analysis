@@ -26,9 +26,59 @@ calculated the difference and applied filters to remove pre-existing water, isol
 because these also can lead to dark spots, and then we calculated the area for the same.
 
 
+#  Using Feature Collections
 We have found a feature collection for separating the Assam region and also filtered the Sentinel
 1 collection using the properties we need, which include the following:
 1. Instrument Mode: IW
 2. Transmitter Receiver Polarisation: VH
 3. Orbit Properties Pass: DESCENDING. We can choose ASCENDING also, but it has to be
 anyone because otherwise, it’ll lead to pictures with multiple angles
+
+# Using Mosaics
+To analyze the impact of rainfall on a particular region, we employ the mosaic function. This
+function enables us to average data for a set of images and generates a single image that represents
+the entire set.
+We begin by collecting two sets of images: one captured before the rainfall and the other captured
+after the rainfall. To ensure consistency in our analysis, we select the months of March through
+June as the ”before” period and the months of July through October as the ”after” period.
+Next, we use the mosaic function to generate two images: one representing the ”before” period
+and the other representing the ”after” period. We then clip these mosaic images to the geometry
+we have chosen for analysis, which in this case is the Assam location.
+This approach allows us to visualize and compare the two images side by side, providing insights
+into the effects of rainfall on the Assam region
+
+#  Speckle Filtering
+In the context of satellite imagery acquired in the Synthetic Aperture Radar (SAR) format,
+speckles refer to the noise that appears in the images due to the backscattering technique used
+to generate them. SAR images are formed by sending out a radar signal towards the Earth’s
+surface and measuring the time it takes for the signal to bounce back and return to the sensor.
+This process results in the detection of echoes that vary in intensity, which are then used to
+create an image of the target area.
+Speckle formation occurs as a result of the reflection of radar waves from rough surfaces on
+the Earth’s surface. The roughness of the surface causes the radar waves to scatter in multiple
+directions, leading to pixel-to-pixel variations in the intensity of the echoes detected by the sensor.
+This variation in intensity manifests as a granular pattern, which can obscure the underlying
+features of interest in the image.
+The presence of speckles in SAR images is a challenge for image analysis and interpretation, as it
+reduces the visual clarity and can lead to errors in automated processing and analysis. Various
+techniques have been developed to mitigate the effects of speckles in SAR images, including
+filtering and despeckling algorithms that aim to reduce the noise while preserving the underlying
+features of interest.
+
+#  Calculating Flood Area
+The next step in the procedure would be to find the difference between the 2 images, before and
+after, respectively. We will use the divide function for the same.
+After this, we need to threshold the image using a specific threshold which gives us the flooded
+area. But, our work is not done here. If we notice carefully, this will also count permanent water
+regions and those regions with very low slopes because of the lack of reflection from these places.
+So we need to eliminate these areas before counting our final flooded area
+We eliminate permanent water using the GSW feature collection containing permanent water
+fields.
+We also have to remove the misclassified isolated points, i.e., say we have a point that is water
+according to our classification, but if we check the 25 closest points around this point and see
+the number of water points and we get less than 8 points as water, then that would mean that
+this point is misclassified and should not be counted in the same.
+Here we use the Google Earth Engine’s in-built terrain algorithm to select property slope and
+eliminate areas with a slope less than five, i.e., the slope threshold in our situation. After all
+this processing, we get the feature collection with the flooded area marked as red, as shown in
+the image
