@@ -32,7 +32,7 @@ We found a feature collection for separating the Assam region and also filtered 
 1. Instrument Mode: IW
 2. Transmitter Receiver Polarisation: VH
 3. Orbit Properties Pass: DESCENDING. We can choose ASCENDING also, but it has to be
-anyone because otherwise, it’ll lead to pictures with multiple angles
+anyone because otherwise, it will lead to pictures with multiple angles
 
 # Using Mosaics
 To analyze the impact of rainfall on a particular region, we employ the mosaic function. This
